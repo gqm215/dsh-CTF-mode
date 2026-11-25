@@ -1,0 +1,7 @@
+{
+ "meta": {
+  "title": "DSH CTF Mode",
+  "description": "CTF solving mode: 12 entry skills, per-challenge blackboard, fast submit with platform verdict, and an independent behavior auditor.",
+  "detail": "docs/DETAIL.md"
+ }
+}

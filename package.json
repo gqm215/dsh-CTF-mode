@@ -1,0 +1,29 @@
+{
+  "name": "dsh-ctf-mode",
+  "version": "1.0.5",
+  "private": true,
+  "description": "DSH CTF mode bundle: installs the 'ctf' agent preset (12 entry skills, per-challenge blackboard, fast submit + behavior audit, knowledge retrieval).",
+  "type": "module",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "dsh": "0.2.2-rc.5"
+  },
+  "exports": {
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "locale",
+    "docs",
+    "icon.svg",
+    "README.md",
+    "CHANGELOG.md",
+    "mode",
+    "examples"
+  ]
+}

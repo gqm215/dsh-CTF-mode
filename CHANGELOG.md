@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.5 — 2026-11-25
+
+- Packaged as an installable DSH bundle at the repository root: `package.json` declares
+  `dsh.bundle.patch`, `engines.dsh = 0.2.2-rc.5`, locale metadata (`locale/en.json`,
+  `locale/zh.json`), detail document (`docs/DETAIL.md`) and an icon. Installable from GitHub
+  via the Plugins page; the mode runtime still deploys to `~/.agents/ctf-mode/`.
+
 ## 1.0.4 — 2026-11-25
 
 - **Role/vocabulary rename (user-directed).** The leftover "Verifier" wording no longer

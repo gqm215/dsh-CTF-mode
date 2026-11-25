@@ -1,0 +1,7 @@
+{
+ "meta": {
+  "title": "DSH CTF 模式",
+  "description": "CTF 解题模式：12 个入口技能、按题黑板、快车道提交（平台判定即验证）与独立监察审计。",
+  "detail": "docs/DETAIL.md"
+ }
+}
