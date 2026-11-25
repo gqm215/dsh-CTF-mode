@@ -1,11 +1,14 @@
 # Changelog
 
-## 1.0.5 — 2026-11-25
+## 1.0.6 — 2026-11-25
 
-- Packaged as an installable DSH bundle at the repository root: `package.json` declares
-  `dsh.bundle.patch`, `engines.dsh = 0.2.2-rc.5`, locale metadata (`locale/en.json`,
-  `locale/zh.json`), detail document (`docs/DETAIL.md`) and an icon. Installable from GitHub
-  via the Plugins page; the mode runtime still deploys to `~/.agents/ctf-mode/`.
+- **Controller must never block (user-directed).** C2 persona and PROTOCOL now forbid
+  `wait_agent` timeouts above 120s and any silent multi-minute wait: after dispatch, end the
+  turn and let completion notices arrive; if a wait is unavoidable, cap it at 60–120s, then
+  check status/message the child/finish the turn. A child silent for 5+ minutes must be
+  status-probed or stopped/replaced and recorded as a stall. The controller must always be
+  able to state current progress; never let the user hang for 30+ minutes.
+
 
 ## 1.0.4 — 2026-11-25
 

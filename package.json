@@ -1,6 +1,6 @@
 {
   "name": "dsh-ctf-mode",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": true,
   "description": "DSH CTF mode bundle: installs the 'ctf' agent preset (12 entry skills, per-challenge blackboard, fast submit + behavior audit, knowledge retrieval).",
   "type": "module",
