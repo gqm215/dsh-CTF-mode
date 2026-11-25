@@ -17,13 +17,14 @@ github:gqm215/dsh-CTF-mode
 **方式 B：钉住完整 commit（插件管理里可显示/执行 git 更新）**
 
 ```text
-github:gqm215/dsh-CTF-mode#<完整 40 位 commit sha>
+github:gqm215/dsh-CTF-mode#ba78d1600856d0a6c034382360ea830e9d4e56ee
 ```
 
 **方式 C：本地目录**（开发时用）：把仓库根目录绝对路径填进“添加插件”。
 
 - 兼容性：`engines.dsh = "0.2.2-rc.5"`，即只承诺与本机当前 DSH 版本兼容；DSH 升级后需要重测并更新该字段。
-- 可选：发布到 npm 后可直接输包名 `dsh-ctf-mode` 安装；当前离线来源方式不依赖 npm。
+- 可选：发布到 npm 后可直接输包名 `dsh-ctf-mode` 安装；当前 GitHub 来源方式不依赖 npm。
+- 已用 pnpm 11.24 从 GitHub 实测该 spec 可安装为 `dsh-ctf-mode@1.0.5`（manifest、patch、locale、icon、mode 均随包拉取）。
 
 安装后新建会话选择 **CTF** 预设。bundle 只安装预设；模式运行时仍需部署到 `~/.agents/ctf-mode/`：
 
