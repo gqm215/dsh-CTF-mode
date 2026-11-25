@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dsh.local/ctf-mode/schemas/challenge.schema.json",
+  "title": "CTF challenge descriptor",
+  "description": "Strict, normalized challenge descriptor used by CTF-mode tooling (eval cases, challenge registry, intake). Runtime counters (attempts/spent/created/updated) live in runs/<game>/<chal>/state.json and are deliberately not part of this schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "game", "title", "category", "budget", "phase"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "challenge id, unique inside the game",
+      "minLength": 1,
+      "maxLength": 120,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "game": {
+      "type": "string",
+      "description": "game id (directory name under runs/)",
+      "minLength": 1,
+      "maxLength": 120,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 300
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "web",
+        "pwn",
+        "reverse",
+        "crypto",
+        "forensics",
+        "misc",
+        "ai-ml",
+        "malware",
+        "osint",
+        "red",
+        "blue",
+        "other"
+      ]
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tokens", "minutes"],
+      "properties": {
+        "tokens": {"type": "integer", "minimum": 0},
+        "minutes": {"type": "integer", "minimum": 0}
+      }
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["intake", "triage", "route", "execute", "verify", "submit", "record"]
+    }
+  }
+}

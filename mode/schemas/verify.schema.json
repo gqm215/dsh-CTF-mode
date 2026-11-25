@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dsh.local/ctf-mode/schemas/verify.schema.json",
+  "title": "CTF verification record",
+  "description": "One verification evidence record as appended to runs/<game>/<chal>/verifies.jsonl and rendered as a markdown evidence block in verify.md. verdict=verified requires reproduced=yes, exit=0, an existing --artifact when one was given, and a verifier-* actor.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "claim",
+    "command",
+    "output",
+    "exit",
+    "artifact_sha256",
+    "reproduced",
+    "verdict",
+    "actor",
+    "ts"
+  ],
+  "properties": {
+    "claim": {
+      "type": "string",
+      "description": "one-sentence claim being verified",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "command": {
+      "type": "string",
+      "description": "exact reproduction command",
+      "minLength": 1,
+      "maxLength": 1200
+    },
+    "output": {
+      "type": "string",
+      "description": "inline output text or path to the captured output file",
+      "minLength": 0,
+      "maxLength": 8000
+    },
+    "exit": {
+      "type": "integer",
+      "description": "command exit code"
+    },
+    "artifact_sha256": {
+      "type": ["string", "null"],
+      "description": "sha256 of the artifact, null when no artifact was supplied",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "reproduced": {
+      "type": "string",
+      "enum": ["yes", "no"]
+    },
+    "verdict": {
+      "type": "string",
+      "enum": ["verified", "candidate", "rejected"]
+    },
+    "actor": {
+      "type": "string",
+      "description": "who recorded the evidence",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "ts": {
+      "type": "string",
+      "description": "ISO-8601 timestamp with timezone",
+      "format": "date-time",
+      "minLength": 10,
+      "maxLength": 40
+    }
+  }
+}

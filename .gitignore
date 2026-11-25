@@ -1,0 +1,26 @@
+# runtime data (never publish)
+runs/
+traces/
+pools/
+**/runs/
+**/traces/
+**/pools/
+mode/eval/reports/
+**/eval/reports/
+
+# secrets / local state
+*.session
+*.token
+*.secret
+*_token.txt
+browser-profile/
+**/browser-profile/
+
+# build/cache
+__pycache__/
+**/__pycache__/
+*.pyc
+node_modules/
+tmp/
+**/tmp/
+*.log

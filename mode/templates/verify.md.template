@@ -1,0 +1,39 @@
+# Verify — {{run_id}}
+
+> 验证证据日志（append-only）。`ctfboard.py verify record` 在文件末尾追加证据块；
+> 不要手改历史块，发现问题就追加新的 verify。
+>
+> **没有 fresh evidence，不得声称完成/正确/已解。**
+> "should work"、agent 说成功、HTTP 200、页面刷新了 —— 都不算。
+
+## 三层验证
+
+| 层 | 内容 | 记录要求 |
+|---|---|---|
+| L1 语法/自检 | `--help` / `-T` / `py_compile` / `jq .` / schema | 命令 + exit code |
+| L2 本地复现 | 同输入重跑，产物 hash 一致；独立环境再跑一次 | 完整输出或输出文件、artifact sha256、reproduced=yes |
+| L3 平台判定 | `ctf-submit.py` 轮询最终判定 / 已解 ID | 平台 verdict（HTTP 200 ≠ Accepted） |
+
+## 证据块格式（由 CLI 自动追加）
+
+每个 `verify record` 追加一个块，包含：
+Claim（一句话结论）+ Evidence（command / output 路径或内联 / exit / artifact sha256 /
+reproduced / timestamp / actor / verify_id）+ Verdict（verified | candidate | rejected）。
+
+## 铁律
+
+1. 只有 `verifier*` actor 能写 `verified` 事实；executor 只写 candidate。
+2. `--verdict verified` 必须 `--reproduced yes` 且 `--exit 0`；给了 `--artifact` 必须存在。
+3. 证据不足时 CLI 自动降级为 candidate 并 WARN，不静默放过。
+4. 提交前必须存在 verified 事实；`submit-log` 受 governor 约束（3 次起需独立复核/用户批准，10 次封顶）。
+5. 验证带时间戳；工具/规则/环境变化后旧验证衰减，需要 `reverify` 重新记录。
+
+## 挑战
+
+- game: {{game}}
+- chal: {{chal}}
+- title: {{title}}
+- category: {{category}}
+- created: {{created}}
+
+---

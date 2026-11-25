@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ctf-mode tool manifest",
+  "description": "A tool extension shipped as its own bundle (dsh-ctf-ext-<id>) that adds plugin ids to preset-ctf. Never edit the core bundle to add a tool.",
+  "type": "object",
+  "required": ["schema_version", "id", "bundle", "interface", "permissions", "min_core", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^ext-tool-[a-z0-9-]+$"},
+    "bundle": {"type": "string", "pattern": "^dsh-ctf-ext-[a-z0-9-]+$"},
+    "interface": {
+      "type": "object",
+      "required": ["name", "input_schema", "output_schema"],
+      "properties": {
+        "name": {"type": "string"},
+        "input_schema": {"type": "object"},
+        "output_schema": {"type": "object"},
+        "timeout_ms": {"type": "integer", "minimum": 1000, "maximum": 600000}
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "required": ["network", "credentials", "filesystem"],
+      "properties": {
+        "network": {"type": "boolean"},
+        "credentials": {"type": "array", "items": {"type": "string"}},
+        "filesystem": {"enum": ["none", "workspace", "host"]}
+      }
+    },
+    "min_core": {"type": "string"},
+    "provenance": {"type": "object", "required": ["source", "license"]}
+  }
+}

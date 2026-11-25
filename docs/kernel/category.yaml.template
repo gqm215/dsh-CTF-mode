@@ -1,0 +1,18 @@
+# 类别入口扩展清单（V1 手工；V2 由 skillctl ctf new-category 生成）
+schema_version: 1
+id: ctf-<category>
+entry: roots/resident/ctf-<category>/SKILL.md
+category: <category>
+triggers:
+  - <可观察信号：文件后缀/服务行为/报错串>
+when_not:
+  - <相邻类别>
+reference_index: references/<category>.md
+requires:
+  tools: [bash, web]
+  models: any
+provenance:
+  source: <库/作者>
+  license: MIT
+  hash: "sha256:<...>"
+min_core: 0.1.0

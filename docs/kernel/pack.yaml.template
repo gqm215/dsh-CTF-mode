@@ -1,0 +1,18 @@
+# 深挖包扩展清单（默认不进 catalog）
+schema_version: 1
+id: <category>-<technique>
+category: <category>
+path: roots/packs/<category>/<technique>/SKILL.md
+triggers:
+  - <技术词/工具输出信号>
+when_not:
+  - <更具体的包或入口>
+references:
+  - references/<file>.md
+risk: offensive-ish | defensive | neutral
+invocation: user-only        # 对应 disable-model-invocation: true
+provenance:
+  source: <库/作者>
+  license: MIT
+  hash: "sha256:<...>"
+min_core: 0.1.0

@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ctf-mode platform adapter manifest",
+  "description": "A judging-platform adapter (e.g. gzctf). Six-method contract: doctor, list, download, submit, poll, verify. Adapters must never hard-code credential paths or write flags/tokens to traces.",
+  "type": "object",
+  "required": ["schema_version", "id", "bundle", "methods", "permissions", "min_core", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^ext-platform-[a-z0-9-]+$"},
+    "bundle": {"type": "string"},
+    "methods": {
+      "type": "object",
+      "required": ["doctor", "list", "download", "submit", "poll", "verify"],
+      "additionalProperties": false,
+      "properties": {
+        "doctor": {"type": "string"},
+        "list": {"type": "string"},
+        "download": {"type": "string"},
+        "submit": {"type": "string"},
+        "poll": {"type": "string"},
+        "verify": {"type": "string"}
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "required": ["network", "credentials"],
+      "properties": {
+        "network": {"type": "boolean"},
+        "credentials": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "acceptance": {"type": "string", "description": "The terminal state that counts as solved; HTTP 200 must not be accepted."},
+    "min_core": {"type": "string"},
+    "provenance": {"type": "object", "required": ["source", "license"]}
+  }
+}

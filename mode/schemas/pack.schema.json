@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ctf-mode pack manifest",
+  "description": "A deep-dive technique pack. Packs never enter the skill catalog; they are indexed and read on demand through `skillctl ctf search/show`.",
+  "type": "object",
+  "required": ["schema_version", "id", "category", "path", "triggers", "when_not", "risk", "invocation", "provenance", "min_core"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+-[a-z0-9-]+$"},
+    "category": {"type": "string", "minLength": 2},
+    "path": {"type": "string"},
+    "triggers": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 2}},
+    "when_not": {"type": "array", "items": {"type": "string"}},
+    "references": {"type": "array", "items": {"type": "string"}},
+    "risk": {"enum": ["neutral", "offensive-ish", "offensive"]},
+    "invocation": {"enum": ["user-only", "model"]},
+    "provenance": {
+      "type": "object",
+      "required": ["source", "license"],
+      "additionalProperties": false,
+      "properties": {
+        "source": {"type": "string"},
+        "license": {"type": "string"},
+        "hash": {"type": "string"}
+      }
+    },
+    "min_core": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "enabled": {"type": "boolean", "default": false}
+  }
+}
