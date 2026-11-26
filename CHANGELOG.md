@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.7 — 2026-11-26
+
+- Controller discipline simplified to the event-driven rule (user-corrected): the controller
+  does not wait or sleep; it dispatches, ends its turn, and acts on proactive child reports and
+  completion notices. Children must report at start, at milestones, immediately on a blocker,
+  and once at completion. Removed the invented `wait_agent` time caps, "silent for 5 minutes"
+  numbers and the "downgrade to C1" escape: none of those were grounded rules, and downgrading
+  does not fix a stuck controller (cancelling/re-dispatching does).
+
+
 ## 1.0.6 — 2026-11-25
 
 - **Controller must never block (user-directed).** C2 persona and PROTOCOL now forbid
