@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.9 — 2026-11-26
+
+- Handoff of the local CTF toolchain (user, measured 2026-11-26) into the mode's cognitive layer:
+  persona now knows the three layers (Windows shims under `D:\CTF\Toolchain\bin`, WSL bins,
+  TOOLS.md/AGENTS.md, MCP endpoints, doctor/`DOWN` semantics, fresh-shell PATH caveat) and points
+  to the full handoff at `~/.agents/ctf-mode/docs/TOOLCHAIN.md` (also shipped as `mode/docs/TOOLCHAIN.md`).
+
+
 ## 1.0.8 — 2026-11-26
 
 - **Scope correction (user):** only waiting on a subagent is forbidden. A blocking wait that a
