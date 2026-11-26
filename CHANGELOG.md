@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.11 — 2026-11-26
+
+- **Code-level enforcement of the controller rule.** Prompt text alone did not stop a controller from
+  calling `wait_agent` with a long timeout. The preset now mounts a small Host plugin
+  (`plugins/wait-control.js`) that restricts `wait_agent` out of the CTF tool surface and denies any
+  residual call with an actionable reason; command waits are unaffected. The bundle package is also
+  renamed to `dsh-ctf-mode` so local and GitHub installs resolve the same plugin specifier.
+
+
 ## 1.0.10 — 2026-11-26
 
 - Toolchain framework made portable for remote/other hosts: `toolchain/` ships the registry-driven

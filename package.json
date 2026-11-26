@@ -1,6 +1,6 @@
 {
   "name": "dsh-ctf-mode",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "private": true,
   "description": "DSH CTF mode bundle: installs the 'ctf' agent preset (12 entry skills, per-challenge blackboard, fast submit + behavior audit, knowledge retrieval).",
   "type": "module",
@@ -13,18 +13,20 @@
     "dsh": "0.2.2-rc.5"
   },
   "exports": {
+    ".": "./plugins/wait-control.js",
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg"
   },
   "files": [
-    "cordis.patch.yml",
-    "locale",
-    "docs",
-    "icon.svg",
-    "README.md",
     "CHANGELOG.md",
-    "mode",
+    "README.md",
+    "cordis.patch.yml",
+    "docs",
     "examples",
+    "icon.svg",
+    "locale",
+    "mode",
+    "plugins",
     "toolchain"
   ]
 }

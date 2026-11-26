@@ -101,6 +101,8 @@
                 name: '@deepseek-ai/dsh-tool-subagent-control'
                 config:
                   interrupt: false
+              - id: wait-control
+                name: dsh-ctf-mode
               - id: tool-subagent
                 name: '@deepseek-ai/dsh-tool-subagent'
                 config:
