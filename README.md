@@ -29,7 +29,7 @@ github:gqm215/dsh-CTF-mode
 **方式 B：钉住完整 commit（插件管理里可显示/执行 git 更新）**
 
 ```text
-github:gqm215/dsh-CTF-mode#a8a955c35f4ddfc31e0185a16ba7a31009f7b6b7
+github:gqm215/dsh-CTF-mode#f66280b9102534bd9877e27d4af0590933670af7
 ```
 
 **方式 C：本地目录**：把仓库根目录绝对路径填进「添加插件」。
