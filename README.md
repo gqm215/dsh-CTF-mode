@@ -34,6 +34,8 @@ copy mode\* 到 %USERPROFILE%\.agents\ctf-mode\
 copy mode\config.example.yaml 为 config.yaml
 ```
 
+远端/其他主机部署见 `docs/DEPLOY-REMOTE.md`（clone 后跑 `toolchain/bootstrap.sh` 或 `toolchain/bootstrap.ps1`）。
+
 ## 组成
 
 | 目录 | 内容 |
@@ -42,6 +44,7 @@ copy mode\config.example.yaml 为 config.yaml
 | `locale/`、`icon.svg`、`docs/DETAIL.md` | 插件管理里的标题/描述/详情页/图标 |
 | `mode/` | 模式运行时：SPEC / PROTOCOL / 12 入口技能 / 平台适配器 / 黑板 / 监察审计 / 预算 / 路由评测 / config.example.yaml |
 | `docs/` | 设计与实施报告、内核方法论、验收记录、内核模板 |
+| `toolchain/` | 可移植三层工具链框架（registry → bin → doctor/TOOLS.md）+ `bootstrap.sh` / `bootstrap.ps1`，可在远端/其他主机快速部署 |
 | `examples/` | 自然指令版实验提示词 |
 
 ## 验证（本机 2026-11-25 验收，非平台承诺）

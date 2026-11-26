@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "updated": "2026-11-24",
+  "side": "wsl:kali-linux",
+  "note": "kali 工具集契约表（与 26.04 同构 doctor.py）。",
+  "entries": [
+    {
+      "name": "python3",
+      "kind": "cmd",
+      "cmd": "python3",
+      "version": "python3 -V"
+    },
+    {
+      "name": "pwntools",
+      "kind": "probe",
+      "probe": "python3 -c 'import pwn; print(\"pwntools ok\")'"
+    },
+    {
+      "name": "z3",
+      "kind": "probe",
+      "probe": "python3 -c 'import z3; print(z3.get_version_string())'"
+    },
+    {
+      "name": "sqlmap",
+      "kind": "cmd",
+      "cmd": "sqlmap",
+      "version": "sqlmap --version"
+    },
+    {
+      "name": "ffuf",
+      "kind": "cmd",
+      "cmd": "ffuf",
+      "version": "ffuf -V"
+    },
+    {
+      "name": "gobuster",
+      "kind": "cmd",
+      "cmd": "gobuster"
+    },
+    {
+      "name": "nmap",
+      "kind": "cmd",
+      "cmd": "nmap",
+      "version": "nmap --version"
+    },
+    {
+      "name": "hydra",
+      "kind": "cmd",
+      "cmd": "hydra"
+    },
+    {
+      "name": "nikto",
+      "kind": "cmd",
+      "cmd": "nikto"
+    },
+    {
+      "name": "wpscan",
+      "kind": "cmd",
+      "cmd": "wpscan",
+      "version": "wpscan --version"
+    },
+    {
+      "name": "mitmproxy",
+      "kind": "cmd",
+      "cmd": "mitmproxy",
+      "version": "mitmproxy --version"
+    },
+    {
+      "name": "msfconsole",
+      "kind": "cmd",
+      "cmd": "msfconsole",
+      "version": "msfconsole --version"
+    },
+    {
+      "name": "binwalk",
+      "kind": "cmd",
+      "cmd": "binwalk"
+    },
+    {
+      "name": "exiftool",
+      "kind": "cmd",
+      "cmd": "exiftool",
+      "version": "exiftool -ver"
+    },
+    {
+      "name": "hashcat",
+      "kind": "cmd",
+      "cmd": "hashcat",
+      "version": "hashcat --version"
+    },
+    {
+      "name": "john",
+      "kind": "cmd",
+      "cmd": "john"
+    },
+    {
+      "name": "sqlite3",
+      "kind": "cmd",
+      "cmd": "sqlite3",
+      "version": "sqlite3 --version"
+    },
+    {
+      "name": "radare2",
+      "kind": "cmd",
+      "cmd": "r2",
+      "version": "r2 -v"
+    },
+    {
+      "name": "gdb-multiarch",
+      "kind": "cmd",
+      "cmd": "gdb-multiarch"
+    },
+    {
+      "name": "qemu-user",
+      "kind": "cmd",
+      "cmd": "qemu-arm"
+    },
+    {
+      "name": "jadx",
+      "kind": "cmd",
+      "cmd": "jadx",
+      "version": "jadx --version"
+    },
+    {
+      "name": "apktool",
+      "kind": "cmd",
+      "cmd": "apktool",
+      "version": "apktool --version"
+    },
+    {
+      "name": "ctf-bin",
+      "kind": "path",
+      "path": "/home/godfather/CTF_Lab/Toolchain/bin/ctf-doctor"
+    }
+  ]
+}

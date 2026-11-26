@@ -1,0 +1,257 @@
+{
+  "schema": 1,
+  "updated": "2026-11-26",
+  "note": "契约层单一事实源。doctor.ps1 读它做体检，gen_tools.ps1 读它生成 TOOLS.md。路径一律用正斜杠。entry=调用入口（shim），exec=工具实体。",
+  "entries": [
+    {
+      "name": "ida-mcp",
+      "kind": "mcp",
+      "transport": "stdio",
+      "side": "win",
+      "user": "Geqim",
+      "call": [
+        "D:/Major_CompuTech_Suite/IDA Pro 9.3/python311/python.exe",
+        "-m",
+        "ida_pro_mcp.server"
+      ],
+      "depends": {
+        "http": "http://127.0.0.1:13337"
+      },
+      "min_tools": 10,
+      "category": [
+        "reverse"
+      ],
+      "notes": "IDA 侧需先打开目标并启动插件（scripts/ida_mcp_start.py）；代理只负责把 stdio 转成 13337 的 HTTP。"
+    },
+    {
+      "name": "idat",
+      "kind": "cli",
+      "side": "win",
+      "entry": "D:/CTF/Toolchain/bin/idat.cmd",
+      "exec": "D:/Major_CompuTech_Suite/IDA Pro 9.3/idat.exe",
+      "category": [
+        "reverse"
+      ],
+      "notes": "IDA 批处理：idat -A -S<script> <bin>。批量反编译/导表优先用它，不必开 GUI。"
+    },
+    {
+      "name": "ida-gui",
+      "kind": "gui",
+      "side": "win",
+      "entry": "D:/CTF/Toolchain/bin/ida.cmd",
+      "exec": "D:/Major_CompuTech_Suite/IDA Pro 9.3/ida.exe",
+      "category": [
+        "reverse"
+      ],
+      "notes": "只做启动；Agent 不用它，用 ida-mcp 或 idat。"
+    },
+    {
+      "name": "tshark",
+      "kind": "cli",
+      "side": "win",
+      "entry": "D:/CTF/Toolchain/bin/tshark.cmd",
+      "exec": "D:/Major_CompuTech_Suite/Wireshark/tshark.exe",
+      "probe": {
+        "args": [
+          "-v"
+        ]
+      },
+      "category": [
+        "misc",
+        "forensic"
+      ],
+      "notes": "Wireshark 的批处理面；-T json 可结构化输出。"
+    },
+    {
+      "name": "jadx",
+      "kind": "cli",
+      "side": "win",
+      "entry": "D:/CTF/Toolchain/bin/jadx.cmd",
+      "exec": "D:/Tools/jadx-1.5.5/bin/jadx.bat",
+      "probe": {
+        "args": [
+          "--version"
+        ]
+      },
+      "category": [
+        "reverse",
+        "android"
+      ],
+      "notes": "需要 Java 11+：系统 java 是 8，shim 里改用 Android Studio 的 JBR 21。"
+    },
+    {
+      "name": "adb",
+      "kind": "cli",
+      "side": "win",
+      "entry": "D:/CTF/Toolchain/bin/adb.cmd",
+      "exec": "D:/Tools/platform-tools-latest-windows/platform-tools/adb.exe",
+      "probe": {
+        "args": [
+          "version"
+        ]
+      },
+      "category": [
+        "android"
+      ],
+      "notes": "platform-tools；未进 PATH，走 bin shim。"
+    },
+    {
+      "name": "vmrun",
+      "kind": "cli",
+      "side": "win",
+      "entry": "D:/CTF/Toolchain/bin/vmrun.cmd",
+      "exec": "D:/Major_CompuTech_Suite/VMware/VMware Workstation/vmrun.exe",
+      "category": [
+        "reverse",
+        "sandbox"
+      ],
+      "notes": "VMware 的批处理面：起停虚拟机、执行 guest 命令。"
+    },
+    {
+      "name": "python",
+      "kind": "cli",
+      "side": "win",
+      "exec": "C:/Python314/python.exe",
+      "probe": {
+        "args": [
+          "-V"
+        ]
+      },
+      "category": [
+        "core"
+      ],
+      "notes": "系统 Python 3.14；z3/pycryptodome/sympy/numpy/requests/PIL 可用。"
+    },
+    {
+      "name": "x64dbg",
+      "kind": "gui",
+      "side": "win",
+      "exec": "C:/Users/Geqim/AppData/Local/Microsoft/WinGet/Packages/x64dbg.x64dbg_Microsoft.Winget.Source_8wekyb3d8bbwe/release/x64/x64dbg.exe",
+      "category": [
+        "reverse"
+      ],
+      "notes": "WinGet 安装（2026.05.27）；GUI 调试器，Agent 侧待接 x64dbg_mcp。"
+    },
+    {
+      "name": "x32dbg",
+      "kind": "gui",
+      "side": "win",
+      "exec": "C:/Users/Geqim/AppData/Local/Microsoft/WinGet/Packages/x64dbg.x64dbg_Microsoft.Winget.Source_8wekyb3d8bbwe/release/x32/x32dbg.exe",
+      "category": [
+        "reverse"
+      ],
+      "notes": "x64dbg 的 32 位版。"
+    },
+    {
+      "name": "es",
+      "kind": "cli",
+      "side": "win",
+      "entry": "D:/CTF/Toolchain/bin/es.cmd",
+      "exec": "D:/Tools/Everything/es.exe",
+      "probe": {
+        "args": [
+          "-version"
+        ]
+      },
+      "category": [
+        "core"
+      ],
+      "notes": "Everything 命令行（1.1.0.27），通用工具，装在本体同目录；注意索引可能含已删除的幽灵条目。"
+    },
+    {
+      "name": "efind",
+      "kind": "cli",
+      "side": "win",
+      "entry": "D:/CTF/Toolchain/bin/efind.cmd",
+      "exec": "D:/CTF/Toolchain/scripts/efind.ps1",
+      "probe": {
+        "args": [
+          "-Json",
+          "-Max",
+          "1",
+          "ida.exe"
+        ]
+      },
+      "category": [
+        "core"
+      ],
+      "notes": "es 的封装：CSV 取大小/时间 + Test-Path 过滤幽灵 + 可 -Json；避免把已删文件当事实。"
+    },
+    {
+      "name": "x64dbg-mcp",
+      "kind": "mcp",
+      "transport": "stdio",
+      "side": "win",
+      "user": "Geqim",
+      "call": [
+        "C:/Program Files/nodejs/node.exe",
+        "C:/Users/Geqim/AppData/Roaming/npm/node_modules/x64dbg-mcp-server/dist/index.js"
+      ],
+      "depends": {
+        "http": "http://127.0.0.1:27042"
+      },
+      "min_tools": 20,
+      "category": [
+        "reverse"
+      ],
+      "notes": "x64dbg 插件(.dp64/.dp32 已装) + Node 桥，23 tools；插件监听 127.0.0.1:27042，需 x64dbg 运行才可用。"
+    },
+    {
+      "name": "cdb",
+      "kind": "cli",
+      "side": "win",
+      "exec": "C:/Program Files (x86)/Windows Kits/10/Debuggers/x64/cdb.exe",
+      "probe": {
+        "args": [
+          "-version"
+        ]
+      },
+      "category": [
+        "reverse"
+      ],
+      "notes": "Windows SDK 调试器命令行（10.0.26100.8249）；KD/CDB 脚本化调试、dump 分析。"
+    },
+    {
+      "name": "windbg-mcp",
+      "kind": "mcp",
+      "transport": "stdio",
+      "side": "win",
+      "user": "Geqim",
+      "call": [
+        "C:\\Users\\Geqim\\AppData\\Roaming\\Python\\Python314\\Scripts\\mcp-windbg.exe"
+      ],
+      "min_tools": 10,
+      "category": [
+        "reverse"
+      ],
+      "notes": "mcp-windbg 1.6.0：12 tools，驱动 cdb/kd 分析 dump 或 live 调试。"
+    },
+    {
+      "name": "burp",
+      "kind": "gui",
+      "side": "win",
+      "exec": "C:/Users/Geqim/AppData/Local/Programs/BurpSuiteCommunity/BurpSuiteCommunity.exe",
+      "entry": "D:/SecTools/GUI/burp-launch.cmd",
+      "category": [
+        "web"
+      ],
+      "notes": "Burp Community 2026.3.1。MCP 扩展 jar 已备（D:\\SecTools\\GUI\\burp-mcp-all.jar），需在 UI 的 MCP 标签页启用后监听 127.0.0.1:9876。"
+    },
+    {
+      "name": "burp-mcp",
+      "kind": "mcp",
+      "transport": "http",
+      "side": "win",
+      "user": "Geqim",
+      "url": "http://127.0.0.1:9876/mcp",
+      "depends": {
+        "http": "http://127.0.0.1:9876"
+      },
+      "min_tools": 20,
+      "category": [
+        "web"
+      ],
+      "notes": "Burp 官方 MCP Server 1.4.0；24 工具；加载扩展即启动，Streamable HTTP 端点 /mcp。"
+    }
+  ]
+}

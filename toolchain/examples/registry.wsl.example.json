@@ -1,0 +1,171 @@
+{
+  "schema": 1,
+  "updated": "2026-11-23",
+  "side": "wsl:Ubuntu-26.04",
+  "note": "WSL 侧契约表。kind: cmd=命令存在(+version 自检) / probe=跑一条探针 / path=文件存在 / http=MCP 握手。",
+  "entries": [
+    {
+      "name": "python3",
+      "kind": "cmd",
+      "cmd": "python3",
+      "version": "python3 -V"
+    },
+    {
+      "name": "pwntools",
+      "kind": "probe",
+      "probe": "python3 -c 'import pwn; print(\"pwntools ok\")'"
+    },
+    {
+      "name": "ctf-venv",
+      "kind": "probe",
+      "probe": "/home/godfather/CTF_Lab/Environment/venv/bin/python -c 'import Crypto, fpylll, ecdsa, xortool, randcrack, primefac, pwn, cypari2; print(\"venv ok\")'"
+    },
+    {
+      "name": "gdb",
+      "kind": "cmd",
+      "cmd": "gdb",
+      "version": "gdb --version"
+    },
+    {
+      "name": "pwndbg",
+      "kind": "path",
+      "path": "/home/godfather/.gdbinit"
+    },
+    {
+      "name": "gdb-multiarch",
+      "kind": "cmd",
+      "cmd": "gdb-multiarch"
+    },
+    {
+      "name": "qemu-user",
+      "kind": "cmd",
+      "cmd": "qemu-arm"
+    },
+    {
+      "name": "radare2",
+      "kind": "cmd",
+      "cmd": "r2",
+      "version": "r2 -v"
+    },
+    {
+      "name": "binwalk",
+      "kind": "cmd",
+      "cmd": "binwalk"
+    },
+    {
+      "name": "exiftool",
+      "kind": "cmd",
+      "cmd": "exiftool",
+      "version": "exiftool -ver"
+    },
+    {
+      "name": "zsteg",
+      "kind": "cmd",
+      "cmd": "zsteg"
+    },
+    {
+      "name": "steghide",
+      "kind": "cmd",
+      "cmd": "steghide",
+      "version": "steghide --version"
+    },
+    {
+      "name": "stegseek",
+      "kind": "cmd",
+      "cmd": "stegseek"
+    },
+    {
+      "name": "foremost",
+      "kind": "cmd",
+      "cmd": "foremost"
+    },
+    {
+      "name": "sleuthkit",
+      "kind": "cmd",
+      "cmd": "fls"
+    },
+    {
+      "name": "volatility3",
+      "kind": "cmd",
+      "cmd": "vol"
+    },
+    {
+      "name": "tshark",
+      "kind": "cmd",
+      "cmd": "tshark",
+      "version": "tshark -v"
+    },
+    {
+      "name": "hashcat",
+      "kind": "cmd",
+      "cmd": "hashcat",
+      "version": "hashcat --version"
+    },
+    {
+      "name": "john",
+      "kind": "cmd",
+      "cmd": "john"
+    },
+    {
+      "name": "docker",
+      "kind": "cmd",
+      "cmd": "docker",
+      "version": "docker --version"
+    },
+    {
+      "name": "angr",
+      "kind": "path",
+      "path": "/opt/angr/bin/python"
+    },
+    {
+      "name": "ghidra-headless",
+      "kind": "path",
+      "path": "/opt/ghidra/support/analyzeHeadless"
+    },
+    {
+      "name": "angr-mcp",
+      "kind": "http",
+      "url": "http://127.0.0.1:8765/mcp"
+    },
+    {
+      "name": "ghidra-mcp",
+      "kind": "http",
+      "url": "http://127.0.0.1:8766/mcp",
+      "token_file": "/root/.local/state/re-mcp-ghidra/daemon.json"
+    },
+    {
+      "name": "sage-image",
+      "kind": "probe",
+      "probe": "docker image inspect sagemath/sagemath >/dev/null 2>&1 && echo present",
+      "optional": true,
+      "notes": "docker.io 直连不通；daocloud 403；1ms/rat 缺 manifest。conda-forge 无 sage 包。当前替代：fpylll+sympy+z3+pari/gp。"
+    },
+    {
+      "name": "libc-database",
+      "kind": "path",
+      "path": "/home/godfather/CTF_Lab/Tools/libc-database"
+    },
+    {
+      "name": "how2heap",
+      "kind": "path",
+      "path": "/home/godfather/CTF_Lab/Tools/how2heap"
+    },
+    {
+      "name": "pari-gp",
+      "kind": "cmd",
+      "cmd": "gp",
+      "version": "gp --version",
+      "note": "PARI/GP 2.17.3，数论/椭圆曲线/因式分解"
+    },
+    {
+      "name": "cypari2",
+      "kind": "probe",
+      "probe": "/home/godfather/CTF_Lab/Environment/venv/bin/python -c 'import cypari2; print(cypari2.Pari()(\"2+2\"))'"
+    },
+    {
+      "name": "ctf-bin",
+      "kind": "path",
+      "path": "/home/godfather/CTF_Lab/Toolchain/bin/ctf-doctor"
+    }
+  ]
+}

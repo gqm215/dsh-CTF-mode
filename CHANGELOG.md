@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.10 — 2026-11-26
+
+- Toolchain framework made portable for remote/other hosts: `toolchain/` ships the registry-driven
+  framework plus `bootstrap.sh` / `bootstrap.ps1`, `portable/registry_init.py` (detects tools actually
+  on PATH), portable `gen_bin` for Windows shims, and `docs/DEPLOY-REMOTE.md`. Persona now tells the
+  agent to deploy from `toolchain/` when the local paths are absent. Verified on a fresh Windows
+  prefix (5 OK / 0 FAIL) and Ubuntu-26.04 prefix (34 OK / 0 FAIL / 4 SKIP).
+
+
 ## 1.0.9 — 2026-11-26
 
 - Handoff of the local CTF toolchain (user, measured 2026-11-26) into the mode's cognitive layer:

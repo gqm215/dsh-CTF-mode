@@ -99,3 +99,15 @@ python3 ~/CTF_Lab/Toolchain/scripts/doctor.py
 - IDA 用 MCP：`ida.exe -A -S"D:\CTF\Toolchain\scripts\ida_mcp_start.py" <样本>`。
 - Burp：扩展已加载并自动启动 9876；重装时 Extensions → Add → Java → `D:\SecTools\GUI\burp-mcp-all.jar`。
 - WSL 服务挂了：`wsl -u root systemctl start angr-mcp re-mcp-ghidra`，确认 `sleep infinity` 在跑。
+
+
+## 10. 可移植 / 远端部署（框架随仓库分发）
+
+本机路径不是唯一形态：仓库 `toolchain/` 是可移植框架，任何 Windows/Linux/WSL 主机 clone 后跑：
+
+- Linux/WSL：`bash toolchain/bootstrap.sh`
+- Windows：`pwsh -File toolchain/bootstrap.ps1`
+
+bootstrap 用 `portable/registry_init.py` 扫描该机 PATH（不虚构缺失工具）→ 生成 `registry.json` →
+生成 `bin/` 入口 → 写 PATH 标记 → 跑 doctor。远端 Agent 遵循同一契约（先 `ctf-doctor`，用 `<prefix>/bin`，
+DOWN=GUI 没开不算故障）。GUI/MCP 是该主机本地的，不跨机转发。详见仓库 `docs/DEPLOY-REMOTE.md`。
