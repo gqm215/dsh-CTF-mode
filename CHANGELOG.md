@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.8 — 2026-11-26
+
+- **Scope correction (user):** only waiting on a subagent is forbidden. A blocking wait that a
+  command itself requires (build, download, request) is normal and must not be discouraged.
+  Reworded the C2 persona and PROTOCOL bullet so "no waiting" reads as "do not wait on
+  subagents", not as "never block on a command".
+
+
 ## 1.0.7 — 2026-11-26
 
 - Controller discipline simplified to the event-driven rule (user-corrected): the controller
