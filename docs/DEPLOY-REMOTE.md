@@ -1,5 +1,7 @@
 # 远端 / 其他机器部署 CTF 工具链
 
+> 让 Agent 按本提示词装配：[`prompts/toolchain-assembly.md`](../prompts/toolchain-assembly.md)。
+
 本仓库的 `toolchain/` 是**可移植的三层工具链框架**，不是本机快照。任何一台运行 DSH + CTF-mode 的
 Windows 或 Linux/WSL 主机都能在几分钟内得到同一套结构：`registry.json` → `bin/` 入口 → `doctor` 体检 →
 `TOOLS.md` / 技能"环境入口"。

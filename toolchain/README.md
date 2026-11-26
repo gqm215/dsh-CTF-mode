@@ -1,4 +1,7 @@
-# Portable CTF toolchain framework
+# Portable CTF toolchain framework（基础骨架）
+
+> 本目录只搭框架（registry → bin → doctor/TOOLS.md），不安装、不分发任何重型或授权工具。
+> 需要让 Agent 按本机现状装配时，用仓库 `prompts/toolchain-assembly.md`。
 
 Registry-driven three-layer toolchain, deployable to any Windows or Linux/WSL host:
 
